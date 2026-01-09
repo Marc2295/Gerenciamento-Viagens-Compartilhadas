@@ -1,0 +1,21 @@
+Capacidade do veículo: Número máximo de passageiros que podem compartilhar uma viagem
+Velocidade: Fixa
+Intervalo entre partidas: Define o número de unidades de tempo após a primeira corrida em que se deve analisar as requisições de corrida para definir o compartilhamento
+Distância entre origens: Limite de distância entre locais de origem para criação de corrida compartilhada
+Distância entre destinos: Limite de distância entre locais de destino para criação de corrida compartilhada
+Eficiência da corrida: distância total / distância individual
+
+Saída:
+Para cada corrida,
+[tº de conclusão da corrida] [distância total] [nº de paradas] [coordenadas das paradas]
+
+- tempo é calculado pela distância
+- distância é calculada por: SomaDistOrigens + DistanciaCn + SomaDistDestinos, onde:
+    SomaDistOrigens = for (i=0; i<n; i++) {soma += dist(c[i].origem, c[i+1].origem)}
+    DistanciaCn = dist(c[n].origem, c[n].destino)
+    SomaDistDestinos = for (i=n; i>0; i++) {soma += dist(c[i], c[i-1])}
+- nº de paradas é o 2*[tamanho do conjunto R]
+- coordenadas das paradas são obtidas ao ler em sequência os embarques, e depois, os desembarques.
+
+DSU:
+DSU de inteiros em vetor. Cada inteiro corresponde diretamente ao id de uma solicitação. Buscá-la no vetor de solicitações, quando necessário.
